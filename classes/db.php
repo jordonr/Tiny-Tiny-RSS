@@ -29,7 +29,7 @@ class Db implements IDb {
 
 		if (!$this->adapter) die("Error initializing database adapter for " . DB_TYPE);
 
-		$this->link = $this->adapter->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, defined('DB_PORT') ? DB_PORT : "");
+		$this->reconnect();
 
 		if (!$this->link) {
 			die("Error connecting through adapter: " . $this->adapter->last_error());
@@ -54,7 +54,7 @@ class Db implements IDb {
 	}
 
 	function reconnect() {
-		$this->link = $this->adapter->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, defined('DB_PORT') ? DB_PORT : "");
+		$this->link = $this->adapter->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, defined('DB_PORT') ? DB_PORT : "", defined('DB_SOCKET') ? DB_SOCKET : false);
 	}
 
 	function connect($host, $user, $pass, $db, $port) {

@@ -9,6 +9,7 @@
 	define('DB_NAME', "fox");
 	define('DB_PASS', "XXXXXX");
 	define('DB_PORT', ''); // usually 5432 for PostgreSQL, 3306 for MySQL
+	define('DB_SOCKET', '/path/to/mysql.socket') // not required, used to define mysqli socket path
 
 	define('MYSQL_CHARSET', 'UTF8');
 	// Connection charset for MySQL. If you have a legacy database and/or experience
